@@ -1,0 +1,135 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_industry_secondary
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-15 09:17+0000\n"
+"PO-Revision-Date: 2025-01-15 10:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner_industry__child_ids
+msgid "Children"
+msgstr "Hijos"
+
+#. module: partner_industry_secondary
+#: model:ir.model,name:partner_industry_secondary.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: partner_industry_secondary
+#: model:ir.model,name:partner_industry_secondary.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_config_settings__display_last_child_first
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.res_config_settings_view_form
+msgid "Display Child Industries first"
+msgstr "Mostrar Industrias Hijas primero"
+
+#. module: partner_industry_secondary
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.res_config_settings_view_form
+msgid "Display like: Child (Parent &lt; Grandparent)"
+msgstr "Mostrar como: Hijo (Padre &lt; Abuelo)"
+
+#. module: partner_industry_secondary
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.res_config_settings_view_form
+msgid "Enable industries for individuals"
+msgstr "Permitir los sectores para las personas"
+
+#. module: partner_industry_secondary
+#. odoo-python
+#: code:addons/partner_industry_secondary/models/res_partner_industry.py:0
+#, python-format
+msgid "Error! Industry with same name and parent already exists."
+msgstr "¡Error! Ya existe una industria con el mismo nombre y matriz."
+
+#. module: partner_industry_secondary
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.res_config_settings_view_form
+msgid "Industries"
+msgstr "Sectores"
+
+#. module: partner_industry_secondary
+#: model:ir.model,name:partner_industry_secondary.model_res_partner_industry
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.view_res_partner_filter_industry
+msgid "Industry"
+msgstr "Sector"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner__industry_id
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_users__industry_id
+msgid "Main Industry"
+msgstr "Sector"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner_industry__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner_industry__parent_id
+msgid "Parent"
+msgstr "Padre"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner_industry__parent_path
+msgid "Parent Path"
+msgstr "Ruta padre"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner__secondary_industry_ids
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_users__secondary_industry_ids
+msgid "Secondary Industries"
+msgstr "Sectores secundarios"
+
+#. module: partner_industry_secondary
+#: model_terms:ir.ui.view,arch_db:partner_industry_secondary.view_partner_form_industry
+msgid "Sector"
+msgstr "Sector"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,help:partner_industry_secondary.field_res_config_settings__group_use_partner_industry_for_person
+msgid "Set if you want to be able to use industries for individuals also."
+msgstr "Establezca si desea poder usar sectores para individuos también."
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,help:partner_industry_secondary.field_res_config_settings__display_last_child_first
+msgid ""
+"Set if you want to show the last child industries first when displaying "
+"industries.\n"
+"Child (Parent < Grandparent)"
+msgstr ""
+"Márcalo si quieres mostrar la última industria hija primero cuando busques "
+"por industrias.\n"
+"Hija (Padre < Abuelo < Ancestro)"
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_partner__show_partner_industry_for_person
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_users__show_partner_industry_for_person
+msgid "Show Partner Industry For Person"
+msgstr "Mostrar socio Industria Para persona"
+
+#. module: partner_industry_secondary
+#. odoo-python
+#: code:addons/partner_industry_secondary/models/res_partner.py:0
+#, python-format
+msgid "The main industry must be different from the secondary industries."
+msgstr ""
+"La industria principal debe ser diferente de las industrias secundarias."
+
+#. module: partner_industry_secondary
+#: model:ir.model.fields,field_description:partner_industry_secondary.field_res_config_settings__group_use_partner_industry_for_person
+#: model:res.groups,name:partner_industry_secondary.group_use_partner_industry_for_person
+msgid "Use industry for individuals"
+msgstr "Use el sector para individuos"

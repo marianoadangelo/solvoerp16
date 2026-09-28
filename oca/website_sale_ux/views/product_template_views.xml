@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_template_search_view">
+        <field name="name">product.template.product.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <field name="attribute_line_ids" position="before">
+                <field name="public_categ_ids"/>
+            </field>
+        </field>
+    </record>
+
+    <template id="products_add_to_cart" inherit_id="website_sale.products_add_to_cart" active="True" name="Add to Cart">
+        <xpath expr="//a[@t-if='product._website_show_quick_add()']" position="attributes">
+            <attribute name="t-if">product._website_show_quick_add() and len(product.product_variant_ids) == 1</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn-primary')]/.." position="after">
+            <a class="btn btn-secondary btn-m" title="Shopping cart (Select attributes)" t-if="len(product.product_variant_ids) &gt; 1" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                <span class="fa fa-shopping-cart"/>
+            </a>
+        </xpath>
+    </template>
+    <template id="products_categories_list" inherit_id="website_sale.products_categories_list">
+        <label class="form-check-label fw-normal" t-att-for="all_products" position="replace">
+            <label class="form-check-label fw-normal" t-att-for="all_products">All Categories</label>
+        </label>
+    </template>
+</odoo>

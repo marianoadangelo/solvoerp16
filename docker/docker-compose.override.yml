@@ -1,0 +1,4 @@
+services:
+  odoo-16:
+    depends_on:
+      - db-odoo-16

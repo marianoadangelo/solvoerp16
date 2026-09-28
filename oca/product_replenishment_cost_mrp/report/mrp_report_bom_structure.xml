@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_mrp_bom_inherit" inherit_id="mrp.report_mrp_bom">
+        <xpath expr="//h1" position="replace">
+            <h1>BoM Overview (Based on Replenishment Cost)</h1>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker exec:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(xargs ls:*)",
+      "Bash(docker run:*)"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2016-2024 Tecnativa - Carlos Dauden
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
+<templates xml:space="preserve">
+
+    <t t-inherit="account.AccountPaymentField" t-inherit-mode="extension">
+
+        <xpath
+            expr="//a[@class='js_payment_info fa fa-info-circle']"
+            position="attributes"
+        >
+            <attribute
+                name="t-attf-class"
+            >js_payment_info fa fa-#{line.amount &lt; 0.0 and 'warning' or 'info-circle'}</attribute>
+            <attribute name="title">Payment Info</attribute>
+        </xpath>
+
+        <xpath
+            expr="//i[@class='o_field_widget text-start o_payment_label']"
+            position="replace"
+        >
+            <i class="o_field_widget text-start o_payment_label">
+                <span t-if="line.amount &lt; 0.0">Returned on </span>
+                <span t-else="">Paid on </span>
+                <t t-esc="line.date" />
+            </i>
+        </xpath>
+    </t>
+</templates>
