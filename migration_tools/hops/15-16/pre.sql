@@ -34,3 +34,41 @@ SELECT v.id FROM ir_act_window_view v
 DELETE FROM ir_model_data WHERE model = 'ir.actions.act_window.view' AND res_id IN (SELECT id FROM _inova_bind);
 DELETE FROM ir_act_window_view WHERE id IN (SELECT id FROM _inova_bind);
 DROP TABLE _inova_bind;
+
+-- Module renames (Solvo): from 16 on the name website_sale_ux belongs to ADHOC's module (oca/); the Solvo
+-- module (13/15 addons/) is website_sale_fix_ux, so the 16 code must not take over its data.
+-- Each pair: rename the installed old module to its new name (module row, dependencies, xmlids,
+-- view keys) so the new code upgrades the existing data instead of installing fresh. Skipped
+-- when the old one is not installed, or when the new name is already installed. Safe twice.
+DO $$
+DECLARE r record;
+BEGIN
+  FOR r IN SELECT * FROM (VALUES
+      ('website_sale_ux', 'website_sale_fix_ux')) AS t(old_name, new_name)
+  LOOP
+    IF NOT EXISTS (SELECT 1 FROM ir_module_module
+                    WHERE name = r.old_name AND state IN ('installed', 'to upgrade')) THEN
+      CONTINUE;
+    END IF;
+    IF EXISTS (SELECT 1 FROM ir_module_module
+                WHERE name = r.new_name AND state IN ('installed', 'to upgrade', 'to install')) THEN
+      RAISE NOTICE 'INOVA rename % -> % skipped: % is already installed', r.old_name, r.new_name, r.new_name;
+      CONTINUE;
+    END IF;
+    DELETE FROM ir_module_module_dependency
+     WHERE module_id IN (SELECT id FROM ir_module_module WHERE name = r.new_name);
+    DELETE FROM ir_model_data WHERE module = 'base' AND model = 'ir.module.module' AND name = 'module_' || r.new_name;
+    DELETE FROM ir_module_module WHERE name = r.new_name;
+    UPDATE ir_module_module SET name = r.new_name WHERE name = r.old_name;
+    UPDATE ir_module_module_dependency SET name = r.new_name WHERE name = r.old_name;
+    UPDATE ir_model_data SET name = 'module_' || r.new_name
+     WHERE module = 'base' AND model = 'ir.module.module' AND name = 'module_' || r.old_name;
+    UPDATE ir_model_data SET module = r.new_name WHERE module = r.old_name;
+    UPDATE ir_ui_view SET key = r.new_name || '.' || substr(key, length(r.old_name) + 2)
+     WHERE key LIKE r.old_name || '.%';
+    IF to_regclass('public.ir_translation') IS NOT NULL THEN
+      EXECUTE 'UPDATE ir_translation SET module = $1 WHERE module = $2' USING r.new_name, r.old_name;
+    END IF;
+    RAISE NOTICE 'INOVA renamed module % -> %', r.old_name, r.new_name;
+  END LOOP;
+END $$;
