@@ -1,0 +1,3 @@
+# Module renames the 15-16 pre.sql performs ("old new"). The inova_cp module analysis follows them
+# like OpenUpgrade's apriori renames.
+website_sale_ux website_sale_fix_ux
